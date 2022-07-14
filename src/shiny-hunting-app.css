@@ -15,7 +15,7 @@
   flex-direction: column;
   align-items: center;
   position:absolute;
-  width: 10%;
+  width: 15%;
   left: 10%;
 }
 
@@ -52,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 500px;
+  height: 600px;
   width: 30%;
   z-index: 1;
 }
@@ -73,7 +73,7 @@
 }
 
 .pokemon-image img{
-  transform: scaleX(1.75) scaleY(1.75);
+  transform: scaleX(1.5) scaleY(1.5);
 }
 
 .counter-number{
@@ -129,11 +129,14 @@
 
 .credit{
   position: absolute;
+  align-items: center;
+  justify-content: center;
   bottom: 1%;
-  left: 0;
-  right: 0;
+  margin:auto;
   text-align: center;
+  width: 10%;
   font-size: 12px;
+  z-index: 0;
   color: white;
 }
 .credit a{

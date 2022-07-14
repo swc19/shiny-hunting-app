@@ -20,6 +20,8 @@ This app is for streamers who wish to display a shiny hunting tracker on their s
 
 *NOTE:* The count and current Pokémon will persist through restarting your browser, as well as closing/restarting the app, provided you don't clear your local storage (cookies) between uses. 
 
+*NOTE:* You will need a consistent internet connection to get the models. If you're streaming, I assume this won't be a problem.
+
 *NOTE:* Disable any darkmode extension on the localhost domain while using this app.
 
 ## Modifying the App
@@ -48,9 +50,8 @@ If you would like to disable the rainbow effect on a shiny, either don't click t
 *NOTE:* Some very green shinies (Espeon as an example) may get Chroma Keyed out themselves. Adjust the similarity and/or smoothness settings until it looks good.
 
 ## Known Issues
-1. The app does not currently support Alternate forms (Alolan, Galarian, etc.). This should be added in a future update.
-2. There may be some text/image clipping if your browser window is very small. A fullscreen window is recommended.
-3. There may also be some clipping if both your count is large (4 digits) and the current Pokémon has a large model. This is unlikely to occur, however.
+1. There may be some text/image clipping if your browser window is very small. A fullscreen window is recommended.
+2. There may also be some clipping if both your count is large (4 digits) and the current Pokémon has a large model. This is unlikely to occur, however.
 
 
 ## Credits
