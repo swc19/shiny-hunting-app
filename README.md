@@ -57,8 +57,7 @@ If you would like to disable the rainbow effect on a shiny, either don't click t
 
 ## Credits
 This app was created by [swc19](https://github.com/swc19).  
-The Pokedex data used can be found here, created by fanzeyi: [pokemon.json](https://github.com/fanzeyi/pokemon.json/blob/master/pokedex.json)  
-The updated Pokedex data to include Gen 8 was created by KevinMei-Github: [pokemon.json](https://github.com/fanzeyi/pokemon.json/blob/e64c06fdc0a978a36c4138205e7b8462a07a69c8/pokedex.json).
+Data obtained from [pokeapi.co](https://pokeapi.co/).  
 [Pokémon Showdown](https://play.pokemonshowdown.com) is used for the Pokémon images.
 
 
