@@ -50,8 +50,9 @@ If you would like to disable the rainbow effect on a shiny, either don't click t
 *NOTE:* Some very green shinies (Espeon as an example) may get Chroma Keyed out themselves. Adjust the similarity and/or smoothness settings until it looks good.
 
 ## Known Issues
-1. There may be some text/image clipping if your browser window is very small. A fullscreen window is recommended.
-2. There may also be some clipping if both your count is large (4 digits) and the current Pokémon has a large model. This is unlikely to occur, however.
+1. Pokémon from Hisui/regional forms from there are not yet supported, due to no shiny .gif's on Showdown.
+2. There may be some text/image clipping if your browser window is very small. A fullscreen window is recommended.
+3. There may also be some clipping if both your count is large (4 digits) and the current Pokémon has a large model. This is unlikely to occur, however.
 
 
 ## Credits
