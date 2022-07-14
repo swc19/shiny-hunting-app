@@ -83,7 +83,7 @@ function ShinyHuntingApp() {
           <h1 className={shiny ? 'counter-number rainbow' : 'counter-number'}>{count}</h1>
         </div>
         <div className='counter-buttons'>
-          <button onClick={() => setCount(count-1)}>-1</button>
+          <button className={count ? '' : "disabled"} onClick={() => setCount(count-1)}>-1</button>
           <button onClick={() => setCount(count+1)}>+1</button>
           <button onClick={() => {setCount(0); setShiny(false)}}>Reset</button>
           <button onClick={() => setShiny(!shiny)}>{shiny ? 'Unshiny' : 'Shiny'}</button>
