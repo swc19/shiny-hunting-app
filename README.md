@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Shiny Hunting App
+This app is for streamers who wish to display a shiny hunting tracker on their streams. The list is supported up to Gen 8, except for regional forms (see Known Issues).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to Build
+1. Install Node.js: [https://nodejs.org/en/download/](https://nodejs.org/en/download/) 
+2. Clone the repository using Git: 
+   - `git clone https://github.com/swc19/shiny-hunting-app.git`
+3. Navigate to the directory
+4. Run `npm install`
+5. Run `npm start`
+6. The app will be running on localhost:3000
+7. Done!
 
-## Available Scripts
 
-In the project directory, you can run:
+## How to Use
+1. Search the Pokémon you want to track.
+2. Click on the Pokémon.
+3. Increment and decrement using the buttons as necessary.
+4. If you get a shiny, click "Shiny" to celebrate!  
 
-### `npm start`
+*NOTE:* The count and current Pokémon will persist through restarting your browser, as well as closing/restarting the app, provided you don't clear your local storage (cookies) between uses. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*NOTE:* Disable any darkmode extension on the localhost domain while using this app.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Modifying the App
+Typically, the only things you'll want to be modifying are the text color or font used. To do this, go to `shiny-hunting-app.css` in your directory and modify the following lines:  
+- Line 68: 
+  - `color: {YOUR COLOR HERE};`
+- Line 69: 
+  - `font-family: {YOUR FONT HERE}, monospace;`
 
-### `npm test`
+If you would like to disable the rainbow effect on a shiny, either don't click the shiny button or comment out the following:  
+- Line 89: 
+  - `/*animation: colorRotate 1s linear 0s infinite;*/`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## OBS Setup
+1. Select Window Capture in OBS, then capture your browser window and crop to the green box.
+   - You do not have to be precise in the crop, there is enough buffer space to crop some edges.
+2. Set up a Chroma Key under Filters.    
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   Settings: 
+     - Key Color Type: Green
+     - Similarity: ~400
+     - Smoothness: ~75
+     - Key Color Spill Reduction: ~30
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+*NOTE:* Some very green shinies (Espeon as an example) may get Chroma Keyed out themselves. Adjust the similarity and/or smoothness settings until it looks good.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Known Issues
+1. The app does not currently support Alternate forms (Alolan, Galarian, etc.). This should be added in a future update.
+2. There may be some text/image clipping if your browser window is very small. A fullscreen window is recommended.
+3. There may also be some clipping if both your count is large (4 digits) and the current Pokémon has a large model. This is unlikely to occur, however.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Credits
+This app was created by [swc19](https://github.com/swc19).  
+The Pokedex data used can be found here, created by fanzeyi: [pokemon.json](https://github.com/fanzeyi/pokemon.json/blob/master/pokedex.json)  
+The updated Pokedex data to include Gen 8 was created by KevinMei-Github: [pokemon.json](https://github.com/fanzeyi/pokemon.json/blob/e64c06fdc0a978a36c4138205e7b8462a07a69c8/pokedex.json).
+[Pokémon Showdown](https://play.pokemonshowdown.com) is used for the Pokémon images.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This app is licensed under the MIT license. You are permitted to use, modify, and redistribute this app as long as you give credit to the original author. You can also use this on monetized streams without issue.
