@@ -66,166 +66,125 @@ function ShinyHuntingApp() {
         continue;
       }
       
-      
+      const to_replace_perceived = {
+        "-plant": "", // Wormadam
+        "-normal": "", //  Deoxys
+        "-incarnate": "", // Weather trio
+        "-land": "", // Shaymin
+        "-cap": "cap",
+        "-red": "", // Minior
+        "-shield": "", // Aegislash
+        "-amped": "", // Toxtricity
+        "-low-key": "-lowkey",
+        "-aria": "", // Meloetta
+        "-altered": "", // Giratina
+        "-blue": "-bluestriped", // Basculin
+        "-striped": "",
+        "-standard": "", // Darmanitan
+        "-galar-standard": "-galar",
+        "-galar-zen": "-galarzen",
+        "-ordinary": "", // Keldeo
+        "-male": "", // Indeedee + Meowstic
+        "-female": "-f",
+        "-average": "", // Pumpkaboo line
+        "-50": "", // Zygarde
+        "-baile": "", // Oricorio
+        "-pom-pom": "-pompom",
+        "-midday": "", // Lycanroc
+        "-solo": "", // Wishiwashi
+        "-null": "null", // Type: Null
+        "-disguised": "", //  Mimikyu
+        "-jr": "jr", // Mimes
+        "-mime": "mime",
+        "-rime": "rime",
+        "-full-belly": "", // Morpeko
+        "-single-strike": "", // Urshifu
+        "-rapid-strike": "-rapidstrike",
+        "-rock-star": "-rockstar", // Pikachus
+        "-pop-star": "-popstar",
+        "-originalcap": "-kantocap",
+      }
+      Object.entries(to_replace_perceived).forEach(([key, value]) => {
+        element.perceived_name = element.perceived_name.replace(key, value);
+      });
       // Nidorans
       if(element.name.includes("nidoran")){
-        element.perceived_name = element.perceived_name.replace("-m", "m");
-        element.perceived_name = element.perceived_name.replace("-f", "f");
+        element.perceived_name = element.perceived_name.replace("-m", "m").replace("-f", "f");
       }
-      if(element.name.includes("indeedee")){
-        element.perceived_name = element.perceived_name.replace("-female", "-f");
-        element.perceived_name = element.perceived_name.replace("-male", "");
-      }
-
-      // Wormadam plant
-      element.perceived_name = element.perceived_name.replace('-plant', '');
-      // Deoxys normal
-      element.perceived_name = element.perceived_name.replace('-normal', '');
       // Jangmo-o line
       if(element.perceived_name.includes("mo-o")){
         element.perceived_name = element.perceived_name.replace("-", "");
       }
-      // Weather trio
-      element.perceived_name = element.perceived_name.replace("-incarnate", "");
-
-      // Shaymin land
-      element.perceived_name = element.perceived_name.replace("-land", "");
-
-      // Pika Caps
-      element.perceived_name = element.perceived_name.replace("-cap", "cap");
-
-      // Default Minior
-      element.perceived_name = element.perceived_name.replace("-red", "");
-
-      // Aegislash
-      element.perceived_name = element.perceived_name.replace("-shield", "");
-
-      // Toxtricity
-      element.perceived_name = element.perceived_name.replace("-amped", "");
-      element.perceived_name = element.perceived_name.replace("-low-key", "-lowkey");
-
-      // Meloetta
-      element.perceived_name = element.perceived_name.replace("-aria", "");
-
-      // Giratina
-      element.perceived_name = element.perceived_name.replace("-altered", "");
-
-      // Basculin
-      element.perceived_name = element.perceived_name.replace("-blue", "-bluestriped");
-      element.perceived_name = element.perceived_name.replace("-striped", "");
-
-      // Darmanitan
-      element.perceived_name = element.perceived_name.replace("-standard", "");
-      element.perceived_name = element.perceived_name.replace("-galar-standard", "-galar");
-      element.perceived_name = element.perceived_name.replace("-galar-zen", "-galarzen");
-
-      // Keldeo
-      element.perceived_name = element.perceived_name.replace("-ordinary", "");
-
-      // Meowstic
-      element.perceived_name = element.perceived_name.replace("-male", "");
-      element.perceived_name = element.perceived_name.replace("-female", "-f");
-
-      // Pumpkaboo line
-      element.perceived_name = element.perceived_name.replace("-average", "");
-
-      // Zygarde
-      element.perceived_name = element.perceived_name.replace("-50", "");
-
-      // Oricorio
-      element.perceived_name = element.perceived_name.replace("-baile", "");
-      element.perceived_name = element.perceived_name.replace("-pom-pom", "-pompom");
-
-      // Lycanroc
-      element.perceived_name = element.perceived_name.replace("-midday", "");
-
-      // Wishiwashi
-      element.perceived_name = element.perceived_name.replace("-solo", "");
-
-      // Type: Null
-      element.perceived_name = element.perceived_name.replace('-null', 'null');
-
-      // Mimikyu
-      element.perceived_name = element.perceived_name.replace("-disguised", "");
-
-      // Mimes
-      element.perceived_name = element.perceived_name.replace('-jr', 'jr');
-      element.perceived_name = element.perceived_name.replace('-mime', 'mime');
-      element.perceived_name = element.perceived_name.replace('-rime', 'rime');
-
-      // Morpeko
-      element.perceived_name = element.perceived_name.replace("-full-belly", "");
-
       // Eiscue
       if(element.perceived_name.includes("eiscue")){
         element.perceived_name = element.perceived_name.replace("-ice", "");
       }
-
-      // Urshifu line
-      element.perceived_name = element.perceived_name.replace("-single-strike", "");
-      element.perceived_name = element.perceived_name.replace("-rapid-strike", "-rapidstrike");
-
-      // Pikachus
-      element.perceived_name = element.perceived_name.replace("-rock-star", "-rockstar");
-      element.perceived_name = element.perceived_name.replace("-pop-star", "-popstar");
-      element.perceived_name = element.perceived_name.replace("-originalcap", "-kantocap");
-
-      // Necrozma
-      element.perceived_name = element.perceived_name.replace("-dusk", "-duskmane");
-      element.perceived_name = element.perceived_name.replace("-dawn", "-dawnwings");
+      // Necrozma Dusk
+      if(element.perceived_name.includes("necrozma")){
+        element.perceived_name = element.perceived_name.replace("-dusk", "-duskmane").replace("-dawn", "-dawnwings");
+      }
 
       // Now change frontend names to be nicer
       
       element.name = upcase(element.name)
 
-      element.name = element.name.replace("-alola", " (Alola)");
-      element.name = element.name.replace("-galar", " (Galar)");
-      element.name = element.name.replace("-mega-x", " (Mega X)");
-      element.name = element.name.replace("-mega-y", " (Mega Y)");
-      element.name = element.name.replace("-mega", " (Mega)");
-      element.name = element.name.replace("-gmax", " (Gmax)");
-      element.name = element.name.replace("-therian", " (Therian)");
-      element.name = element.name.replace("-primal", " (Primal)");
-      element.name = element.name.replace("-incarnate", " (Incarnate)");
-      element.name = element.name.replace("-altered", " (Altered)");
-      element.name = element.name.replace("-normal", "");
-      element.name = element.name.replace("-meteor", " (Meteor)");
-      element.name = element.name.replace("-amped", "");
-      element.name = element.name.replace("-low-key", " (Low Key)");
-      element.name = element.name.replace("-striped", "");
-      element.name = element.name.replace("-standard", "");
-      element.name = element.name.replace("-zen", " (Zen)");
-      element.name = element.name.replace("-average", "");
-      element.name = element.name.replace("-pom-pom", "-pompom");
-      element.name = element.name.replace("-null", ": Null");
-      element.name = element.name.replace("-disguised", "");
-      element.name = element.name.replace("-busted", " (Busted)");
-      element.name = element.name.replace("Mr-mime", "Mr. Mime");
-      element.name = element.name.replace("Mr-rime", "Mr. Rime");
-      element.name = element.name.replace("Mime-jr", "Mime Jr.");
-      element.name = element.name.replace("-full-belly", "");
-      element.name = element.name.replace("-hangry", " (Hangry)");
-      element.name = element.name.replace("-single-strike", "-single Strike");
-      element.name = element.name.replace("-rapid-strike", "-rapid Strike");
-      element.name = element.name.replace("-rock-star", "-rock Star");
-      element.name = element.name.replace("-pop-star", "-pop Star");
-      element.name = element.name.replace("-original-cap", "-kanto");
-      element.name = element.name.replace("-cap", "");
-      element.name = element.name.replace("-origin", " (Origin)");
-      element.name = element.name.replace("-eternal", "");
-      element.name = element.name.replace("-ash", " (Ash)");
-      element.name = element.name.replace("-unbound", " (Unbound)");
-      element.name = element.name.replace("-crowned", " (Crowned)");
-      element.name = element.name.replace("-eternamax", " (Eternamax)");
-      element.name = element.name.replace("-dada", " (Dada)");
-      element.name = element.name.replace("chd", "ch'd");
+      const to_replace_name = {
+        "-alola": " (Alola)", // Alolan forms
+        "-galar": " (Galar)", // Galarian forms
+        "-mega-x": " (Mega X)", // Mega M2/Charizard
+        "-mega-y": " (Mega Y)",
+        "-mega": " (Mega)", // Megas
+        "-gmax": " (Gmax)", // GMaxes
+        "-therian": " (Therian)", // Weather Trio
+        "-incarnate": " (Incarnate)",
+        "-primal": " (Primal)", // Groudon/Kyogre
+        "-original": " (Original)", // Magearna
+        "-origin": " (Origin)", // Giratina
+        "-altered": " (Altered)", 
+        "-normal": "", // Deoxys
+        "-meteor": " (Meteor)", // Minior
+        "-amped": "", // Toxtricity
+        "-low-key": " (Low Key)",
+        "-striped": "", // Basculin
+        "-standard": "", // Darmanitan
+        "-zen": " (Zen)",
+        "-average": "", // Pumpkaboo line
+        "-pom-pom": "-pompom", // Oricorio
+        "-null": " Null", // Type: Null
+        "-disguised": "", //  Mimikyu
+        "-busted": " (Busted)", 
+        "Mr-mime": "Mr. Mime", // Mimes
+        "Mr-rime": "Mr. Rime",
+        "Mime-jr": "Mime Jr.",
+        "-full-belly": "", // Morpeko
+        "-hangry": " (Hangry)",
+        "-single-strike": "-single Strike", // Urshifu
+        "-rapid-strike": "-rapid Strike",
+        "-rock-star": "-rock Star", // Pikachus
+        "-pop-star": "-pop Star",
+        "-original-cap": "-kanto Cap",
+        "-cap": "",
+        "-eternal": "", // Floette
+        "-ash": " (Ash)", // Greninja
+        "-unbound": " (Unbound)", // Hoopa
+        "-crowned": " (Crowned)", // Zacian/Zamazenta
+        "-eternamax": " (Eternamax)", // Eternatus
+        "-dada": " (Dada)", // Zarude
+        "chd": "ch'd", // Farfetch'd line
+      }
+
+
+      Object.entries(to_replace_name).forEach(([key, value]) => {
+        element.name = element.name.replace(key, value);
+      });
+    
 
       const paren = ["Wormadam", "Shaymin", "Deoxys", "Rotom", "Castform", "Meloetta", "Minior", "Basculin", "Keldeo", "Aegislash", "Meowstic", "Zygarde",
-                      "Oricorio", "Lycanroc", "Eiscue", "Kyurem", "Urshifu", "Pikachu", "Necrozma", "Cramorant", "Calyrex"]
+                      "Oricorio", "Lycanroc", "Eiscue", "Kyurem", "Urshifu", "Pikachu", "Necrozma", "Cramorant", "Calyrex", "Indeedee"]
       if(paren.findIndex(arrayelement => element.name.includes(arrayelement)) >= 0){
         splitType(element, true);
       }
-      const no_paren = ["Tapu", "Wishiwashi", "Nidoran", "Indeedee"]
+      const no_paren = ["Tapu", "Wishiwashi", "Nidoran"]
       if(no_paren.findIndex(arrayelement => element.name.includes(arrayelement)) >= 0){
         splitType(element, false);
       }
