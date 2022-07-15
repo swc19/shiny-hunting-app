@@ -3,17 +3,25 @@ import { useEffect, useState } from 'react';
 
 function ShinyHuntingApp() {
 
-  const [dex, setDex] = useState([]);
+  const [filteredDex, setFilteredDex] = useState([]);
+  const [dex, setDex] = useState(() => {
+    const dex = localStorage.getItem('dex');
+    if(dex){
+      setFilteredDex(JSON.parse(dex));
+      return JSON.parse(dex);
+    } else {
+      getDex();
+    };
+  });
   const [current, setCurrent] = useState(() => {
     const saved = localStorage.getItem('current');
-    console.log(typeof saved)
     try{
       return JSON.parse(saved);
     } catch {
       return "";
     }
   });
-  const [filteredDex, setFilteredDex] = useState([]);
+  
   let [count, setCount] = useState(() => {
     const saved = localStorage.getItem('count');
     return saved ? JSON.parse(saved) : 0;
@@ -21,18 +29,35 @@ function ShinyHuntingApp() {
   const [shiny, setShiny] = useState(false);
 
   async function getDex(){
-    //const dex = await fetch('./pokedex.json',);
-    const dex = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1130&offset=0')
+    const dex = await fetch(
+      "https://beta.pokeapi.co/graphql/v1beta",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          query: `
+          query query {
+            pokemon_v2_pokemon {
+              id
+              name
+              pokemon_v2_pokemonspecy {
+                capture_rate
+              }
+            }
+          }`,
+          operationName: "query"
+        })
+      }
+    )
     let dexJson = await dex.json();
-    dexJson = dexJson.results;
+    dexJson = dexJson.data.pokemon_v2_pokemon;
 
     const updated_dex = processDex(dexJson);
     setDex(updated_dex);
+    localStorage.setItem('dex', JSON.stringify(updated_dex));
     setFilteredDex(updated_dex);
   }
 
   function processDex(dex){
-
     function splitType(element, paren){
       const name = element.name.split("-")[1];
       let constructed_string;
@@ -193,16 +218,13 @@ function ShinyHuntingApp() {
   }
 
   useEffect(() => {
-    getDex()
-  }, [])
-
-  useEffect(() => {
     localStorage.setItem('current', JSON.stringify(current));
   }, [current])
   
   useEffect(() => {
     localStorage.setItem('count', JSON.stringify(count));
   }, [count])
+
 
 
   return (
@@ -229,11 +251,15 @@ function ShinyHuntingApp() {
           : null}
           <h1 className={shiny ? 'counter-number rainbow' : 'counter-number'}>{count}</h1>
         </div>
+        <div className='capture-rate'>
+          {(current && dex) ? `Capture Rate: ${(dex.find(pokemon => pokemon.perceived_name === current).pokemon_v2_pokemonspecy.capture_rate)}` : null}
+        </div>
         <div className='counter-buttons'>
           <button className={count ? '' : "disabled"} onClick={() => setCount(count-1)}>-1</button>
           <button onClick={() => setCount(count+1)}>+1</button>
           <button onClick={() => {setCount(0); setShiny(false)}}>Reset</button>
           <button onClick={() => setShiny(!shiny)}>{shiny ? 'Unshiny' : 'Shiny'}</button>
+          <button onClick={() => getDex()}>Refresh</button>
         </div>
       </div>
         
